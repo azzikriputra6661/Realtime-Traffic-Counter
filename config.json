@@ -1,0 +1,232 @@
+{
+    "alamsari_fix_1": {
+        "nama": "Alamsari",
+        "thumbnail": "alamsari.png",
+        "lat": -6.835459,
+        "lon": 107.930447
+    },
+    "alamsari_arah_cirebon": {
+        "nama": "Arah Cirebon",
+        "thumbnail": "alamsari-arah-cirebon.png",
+        "lat": -6.835459,
+        "lon": 107.930447
+    },
+    "alamsari_arah_dishub": {
+        "thumbnail": "alamsari-arah-dishub.png",
+        "lat": -6.835459,
+        "lon": 107.930447
+    },
+    "alamsari_arah_kota": {
+        "thumbnail": "alamsari-arah-kota.png",
+        "lat": -6.835389,
+        "lon": 107.930038
+    },
+    "alamsari_arah_wado": {
+        "thumbnail": "alamsari-arah-wado.png",
+        "lat": -6.835459,
+        "lon": 107.930447
+    },
+    "alun_alun_utara_1": {
+        "thumbnail": "alun-alun-utara-1.png",
+        "lat": -6.848246,
+        "lon": 107.927344
+    },
+    "alun_alun_utara_2": {
+        "thumbnail": "alun-alun-utara-2.png",
+        "lat": -6.848263,
+        "lon": 107.927358
+    },
+    "angkrek_fix_1": {
+        "thumbnail": "angkrek-2.png",
+        "lat": -6.842861,
+        "lon": 107.925635
+    },
+    "angkrek_fix_2": {
+        "thumbnail": "angkrek-2.png",
+        "lat": -6.842861,
+        "lon": 107.925635
+    },
+    "binokasih_fix_3": {
+        "thumbnail": "binokasih.png",
+        "lat": -6.860499,
+        "lon": 107.916619
+    },
+    "binokasih_arah_cirebon": {
+        "thumbnail": "binokasih-arah-cirebon.png",
+        "lat": -6.860115,
+        "lon": 107.916420
+    },
+    "binokasih_arah_gunung_puyuh": {
+        "thumbnail": "binokasih-arah-gunung-puyuh.png",
+        "lat": -6.860493,
+        "lon": 107.916633
+    },
+    "binokasih_arah_kota": {
+        "thumbnail": "binokasih-arah-kota.png",
+        "lat": -6.860493,
+        "lon": 107.916633
+    },
+    "bjb": {
+        "thumbnail": "bjb.png",
+        "lat": -6.854275,
+        "lon": 107.922343
+    },
+    "bni_1": {
+        "thumbnail": "bni.png",
+        "lat": -6.852848,
+        "lon": 107.922624
+    },
+    "bni_2": {
+        "thumbnail": "bni-2.png",
+        "lat": -6.852194,
+        "lon": 107.922665
+    },
+    "btn": {
+        "thumbnail": "btn.png",
+        "lat": -6.845448,
+        "lon": 107.924513
+    },
+    "cimayor_arah_cirebon": {
+        "thumbnail": "cimayor-arah-cirebon.png",
+        "lat": -6.832738,
+        "lon": 107.935421,
+        "y_normal": 705,
+        "y_opposite": 800
+    },
+    "cisero": {
+        "thumbnail": "cisero.png",
+        "lat": -6.832668,
+        "lon": 107.927060,
+        "y_normal": 805,
+        "y_opposite": 900
+    },
+    "dishub_arah_bandung": {
+        "thumbnail": "dishub-arah-bandung.png",
+        "lat": -6.832668,
+        "lon": 107.927060
+    },
+    "dishub_arah_cirebon": {
+        "thumbnail": "dishub-arah-cirebon.png",
+        "lat": -6.832699,
+        "lon": 107.927092
+    },
+    "griya_fix_1": {
+        "thumbnail": "griya-1.png",
+        "lat": -6.840485,
+        "lon": 107.926002
+    },
+    "griya_fix_2": {
+        "thumbnail": "griya-2.png",
+        "lat": -6.840499,
+        "lon": 107.925997
+    },
+    "kejaksaan_fix_1": {
+        "thumbnail": "kejaksaan.png",
+        "lat": -6.859165,
+        "lon": 107.921480
+    },
+    "kejaksaan_fix_2": {
+        "thumbnail": "kejaksaan-2.png",
+        "lat": -6.859165,
+        "lon": 107.921480
+    },
+    "lapas_fix": {
+        "thumbnail": "lapas.png",
+        "lat": -6.839252,
+        "lon": 107.926573
+    },
+    "mpp_1": {
+        "thumbnail": "ptz-mpp.png",
+        "lat": -6.860252,
+        "lon": 107.920244
+    },
+    "ojolali_fix_1": {
+        "thumbnail": "ojolali.png",
+        "lat": -6.841063,
+        "lon": 107.925815
+    },
+    "ojolali_fix_2": {
+        "thumbnail": "ojolali-2.png",
+        "lat": -6.841063,
+        "lon": 107.925815
+    },
+    "padasuka": {
+        "thumbnail": "padasuka.png",
+        "lat": -6.849573,
+        "lon": 107.923320,
+        "y_normal": 805,
+        "y_opposite": 900
+    },
+    "pajaji_fix_1": {
+        "thumbnail": "pajaji-2.png",
+        "lat": -6.849863,
+        "lon": 107.923320
+    },
+    "pajaji_fix_2": {
+        "thumbnail": "pajaji-2.png",
+        "lat": -6.849863,
+        "lon": 107.923320
+    },
+    "pasifik": {
+        "thumbnail": "pasifik.png",
+        "lat": -6.847573,
+        "lon": 107.924689
+    },
+    "pkb_fix_1": {
+        "thumbnail": "pkb-rancapurut.png",
+        "lat": -6.856792,
+        "lon": 107.921689
+    },
+    "rsud_arah_bandung": {
+        "thumbnail": "rsud-arah-bandung.png",
+        "lat": -6.856994,
+        "lon": 107.921816
+    },
+    "rsud_arah_cirebon": {
+        "thumbnail": "rsud-arah-cirebon.png",
+        "lat": -6.857082,
+        "lon": 107.921725
+    },
+    "samoja_fix": {
+        "thumbnail": "samoja.png",
+        "lat": -6.863487,
+        "lon": 107.897118,
+        "y_normal": 805,
+        "y_opposite": 900
+    },
+    "taman_endog_arah_bandung": {
+        "thumbnail": "taman-endog-arah-bandung.png",
+        "lat": -6.841634,
+        "lon": 107.925588
+    },
+    "taman_endog_arah_tegalkalong": {
+        "thumbnail": "taman-endog-arah-tegalkalong.png",
+        "lat": -6.841634,
+        "lon": 107.925588
+    },
+    "taman_endog_fix_1": {
+        "thumbnail": "taman-endog.png",
+        "lat": -6.841634,
+        "lon": 107.925588
+    },
+    "taman_endog_fix_2": {
+        "thumbnail": "taman-endog-2.png",
+        "lat": -6.841634,
+        "lon": 107.925588
+    },
+    "taman_endog_fix_4": {
+        "thumbnail": "taman-endog-4.png",
+        "lat": -6.841634,
+        "lon": 107.925588
+    },
+    "upi_fix_1": {
+        "thumbnail": "upi.png",
+        "lat": -6.835659,
+        "lon": 107.930361
+    },
+    "upi_fix_2": {
+        "thumbnail": "upi-2.png",
+        "lat": -6.835659,
+        "lon": 107.930361
+    }
+}

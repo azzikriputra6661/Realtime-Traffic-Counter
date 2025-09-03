@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+    --warna-biru-utama: #0D6EFD;
+    --warna-putih: #FFFFFF;
+    --warna-hitam: #000000;
+    --warna-cyan: #00FFFF;
+    --warna-latar: #F8F9FA;
+}
+
+html,
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--warna-latar);
+    color: var(--warna-hitam);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+/* NAVBAR BRE */
+
+.cont-navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 75px;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 10;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.cont-navbar .scrolled {
+    position: fixed;
+    background-color: #212529;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.ul-navbar {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    align-items: center;
+    height: 75px;
+    /* background-color: yellow; */
+}
+
+.a-navbar {
+    color: var(--warna-putih);
+    /* background-color: tomato; */
+    list-style: none;
+    padding: 20px;
+    margin: 5px;
+    text-decoration: none;
+}
+
+.a-navbar:hover {
+    color: #009999;
+    border-bottom: #009999 solid 2px;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    /* cursor: pointer; */
+}
+
+.ul-navbar a.active {
+    color: #009999;
+    border-bottom: #009999 solid 2px;
+}
+
+/* NAVBAR SOLID BRE */
+
+.page-solid-nav .cont-navbar {
+    position: static;
+    /* background-color: greenyellow; */
+}
+
+.page-solid-nav .ul-navbar {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    align-items: center;
+    height: 75px;
+    /* background-color: ; */
+}
+
+.page-solid-nav .navbar-left {
+    position: absolute;
+}
+
+.bi.bi-arrow-left {
+    color: var(--warna-putih); 
+}
+
+.bi.bi-arrow-left:hover {
+    color: black;
+    transition: color 0.3s ease;
+}
+
+.page-solid-nav .a-navbar {
+    color: var(--warna-putih);
+    /* background-color: tomato; */
+    list-style: none;
+    padding: 20px;
+    margin: 5px;
+    text-decoration: none;
+}
+
+.page-solid-nav .a-navbar:hover {
+    color: black;
+    border-bottom: black solid 2px;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+.page-solid-nav .ul-navbar a.active {
+    color: black;
+    border-bottom: black solid 2px;
+}
+
+/* HERO NIH BRE */
+
+.hero-section {
+    height: 100vh;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 200px;
+    padding-bottom: 0px;
+}
+
+.hero-content {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 100px;
+}
+
+.hero-content h1 {
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    color: white;
+}
+
+.hero-content p {
+    font-size: 16px;
+    font-weight: 400;
+    max-width: 600px;
+    margin-top: 20px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+    color: white;
+}
+
+.hero-content .btn-cyan {
+    background-color: var(--warna-cyan);
+    color: var(--warna-putih);
+    font-size: 16px;
+    font-weight: 700;
+    padding: 12px 24px;
+    border-radius: 10px;
+    margin-top: 30px;
+    text-decoration: none;
+    background-image: linear-gradient(to bottom, var(--warna-cyan), #009999);
+}
+
+.hero-content .btn-cyan:hover {
+    background-color: var(--warna-putih);
+    color: #009999;
+    background-image: linear-gradient(to bottom, #FDFFFF, #A5A9A9);
+}
+
+/* OPENMAP */
+
+.openmap .my-5 {
+    /* font-size: 30px; */
+}
+
+/* GALERI CCTV NIH BRE */
+
+.section-title {
+    font-size: 40px;
+    font-weight: 700;
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+.cctv-card {
+    padding: 16px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.cctv-grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 45px;
+}
+
+.cctv-card .card-thumbnail {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    margin-bottom: 16px;
+}
+
+.cctv-card .card-thumbnail img {
+    width: 100%;
+    display: block;
+}
+
+.cctv-card .card-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--warna-hitam);
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.2s ease-in-out;
+}
+
+.play-button .play-button-bg {
+    fill: var(--warna-cyan);
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.play-button .play-button-icon {
+    fill: white;
+    transition: fill 0.3s ease;
+}
+
+.play-button:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.play-button:hover .play-button-bg {
+    opacity: 0.8;
+    fill: var(--warna-putih);
+}
+
+.play-button:hover .play-button-icon {
+    fill: var(--warna-cyan);
+}
+
+/* CCTV VIEW */
+
+.detail-cctv .mb-4 {
+    /* background-color: red; */
+    /* width: 100%; */
+}

@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% block title %}Detail CCTV - {{ cctv_name }}{% endblock %}
+{% block content %}
+
+<div class="detail-cctv">
+    <div class="container-fluid p-4">
+        <h1 class="mb-4">{{ cctv_name }}</h1>
+        <div class="row">
+            <div class="col-lg-8 mb-4">
+                <img src="{{ url_for('video_feed', cctv_id=cctv_id) }}" style="width: 100%; background-color: black; border-radius: 15px;">
+            </div>
+
+            <div class="col-lg-4">
+                <div class="mb-4">
+                    <h4>Lajur Kanan (Garis Hijau)</h4>
+                    <small class="text-muted" id="normal-duration">Durasi: Memuat...</small>
+                    <div class="card mt-2">
+                        <div class="card-header fw-bold">Total Terakumulasi</div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between">Kelas 1: Sepeda Motor<span id="normal-total-kelas1" class="badge bg-primary rounded-pill">0</span></li>
+                            <li class="list-group-item d-flex justify-content-between">Kelas 2: Minibus R4 Pribadi atau Elf<span id="normal-total-kelas2" class="badge bg-info rounded-pill">0</span></li>
+                            <li class="list-group-item d-flex justify-content-between">Kelas 3: Kendaraan Berat<span id="normal-total-kelas3" class="badge bg-info rounded-pill">0</span></li>
+                            <li class="list-group-item d-flex justify-content-between">Kelas 4: Bus Besar<span id="normal-total-kelas4" class="badge bg-info rounded-pill">0</span></li>
+                            <li class="list-group-item d-flex justify-content-between">Kelas 5: Truk Besar<span id="normal-total-kelas5" class="badge bg-info rounded-pill">0</span></li>
+                            <li class="list-group-item d-flex justify-content-between">Total<span id="normal-total-all" class="badge bg-dark rounded-pill">0</span></li>
+                        </ul>
+                        <div class="card-header fw-bold">Rata-rata Volume (Estimasi)</div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between">Per Jam<span id="normal-avg-hour" class="badge bg-warning rounded-pill">0</span></li>
+                            <li class="list-group-item d-flex justify-content-between">Per Hari<span id="normal-avg-day" class="badge bg-danger rounded-pill">0</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div>
+                    <h4>Lajur Kiri (Garis Merah)</h4>
+                    <small class="text-muted" id="opposite-duration">Durasi: Memuat...</small>
+                    <div class="card mt-2">
+                        <div class="card-header fw-bold">Total Terakumulasi</div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between">Kelas 1: Sepeda Motor<span id="opposite-total-kelas1" class="badge bg-primary rounded-pill">0</span></li>
+                            <li class="list-group-item d-flex justify-content-between">Kelas 2: Minibus, R4 Pribadi atau Elf<span id="opposite-total-kelas2" class="badge bg-info rounded-pill">0</span></li>
+                            <li class="list-group-item d-flex justify-content-between">Kelas 3: Kendaraan Berat<span id="opposite-total-kelas3" class="badge bg-primary rounded-pill">0</span></li>
+                            <li class="list-group-item d-flex justify-content-between">Kelas 4: Bus Besar<span id="opposite-total-kelas4" class="badge bg-info rounded-pill">0</span></li>
+                            <li class="list-group-item d-flex justify-content-between">Kelas 5: Truk Besar<span id="opposite-total-kelas5" class="badge bg-info rounded-pill">0</span></li>
+                            <li class="list-group-item d-flex justify-content-between">Total<span id="opposite-total-all" class="badge bg-dark rounded-pill">0</span></li>
+                        </ul>
+                         <div class="card-header fw-bold">Rata-rata Volume (Estimasi)</div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between">Per Jam<span id="opposite-avg-hour" class="badge bg-warning rounded-pill">0</span></li>
+                            <li class="list-group-item d-flex justify-content-between">Per Hari<span id="opposite-avg-day" class="badge bg-danger rounded-pill">0</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function updateStats() {
+        const cctvId = '{{ cctv_id }}';
+        fetch(`/api/stats/${cctvId}`)
+            .then(response => response.json())
+            .then(data => {
+                // Update Blok Arah Normal
+                const normal = data.normal;
+                document.getElementById('normal-duration').innerText = `Durasi: ${normal.duration_string}`;
+                document.getElementById('normal-total-kelas1').innerText = normal.cumulative.kelas_1_sepeda_motor;
+                document.getElementById('normal-total-kelas2').innerText = normal.cumulative.kelas_2_minibus_r4_pribadi_atau_elf;
+                document.getElementById('normal-total-kelas3').innerText = normal.cumulative.kelas_3_kendaraan_berat;
+                document.getElementById('normal-total-kelas4').innerText = normal.cumulative.kelas_4_bus_besar;
+                document.getElementById('normal-total-kelas5').innerText = normal.cumulative.kelas_5_truk_besar;
+                document.getElementById('normal-total-all').innerText = normal.cumulative.total;
+                document.getElementById('normal-avg-hour').innerText = normal.averages.per_hour.toFixed(1);
+                document.getElementById('normal-avg-day').innerText = normal.averages.per_day.toFixed(1);
+
+                // Update Blok Arah Opposite
+                const opposite = data.opposite;
+                document.getElementById('opposite-duration').innerText = `Durasi: ${opposite.duration_string}`;
+                document.getElementById('opposite-total-kelas1').innerText = opposite.cumulative.kelas_1_sepeda_motor;
+                document.getElementById('opposite-total-kelas2').innerText = opposite.cumulative.kelas_2_minibus_r4_pribadi_atau_elf;
+                document.getElementById('opposite-total-kelas3').innerText = opposite.cumulative.kelas_3_kendaraan_berat;
+                document.getElementById('opposite-total-kelas4').innerText = opposite.cumulative.kelas_4_bus_besar;
+                document.getElementById('opposite-total-kelas5').innerText = opposite.cumulative.kelas_5_truk_besar;
+                document.getElementById('opposite-total-all').innerText = opposite.cumulative.total;
+                document.getElementById('opposite-avg-hour').innerText = opposite.averages.per_hour.toFixed(1);
+                document.getElementById('opposite-avg-day').innerText = opposite.averages.per_day.toFixed(1);
+            })
+            .catch(error => console.error('Gagal mengambil data statistik:', error));
+    }
+    setInterval(updateStats, 5000);
+    document.addEventListener('DOMContentLoaded', updateStats); 
+</script>
+
+{% endblock %}

@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% block title %}Rekapitulasi Lalu Lintas{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="text-center mb-4">Dasbor Rekapitulasi Lalu Lintas</h1>
+    <p class="text-center text-muted mb-5">
+        Data diperbarui setiap 10 detik dari worker yang berjalan di latar belakang.
+        <span id="last-updated" class="d-block mt-2"></span>
+    </p>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Lokasi CCTV</th>
+                    <th scope="col">Arah</th>
+                    <th scope="col" class="text-center">Motor</th>
+                    <th scope="col" class="text-center">Mobil/Elf</th>
+                    <th scope="col" class="text-center">Kend. Berat</th>
+                    <th scope="col" class="text-center">Bus Besar</th>
+                    <th scope="col" class="text-center">Truk Besar</th>
+                    <th scope="col" class="text-center fw-bold">TOTAL</th>
+                </tr>
+            </thead>
+            <tbody id="summary-table-body">
+                <tr>
+                    <td colspan="8" class="text-center">
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <span class="ms-2">Memuat data awal...</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    function updateSummary() {
+        fetch('/api/summary/all_active')
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.getElementById('summary-table-body');
+                tableBody.innerHTML = ''; // Kosongkan tabel sebelum diisi data baru
+
+                // Urutkan CCTV berdasarkan nama untuk tampilan yang konsisten
+                const sortedCctvIds = Object.keys(data).sort((a, b) => data[a].nama.localeCompare(data[b].nama));
+
+                for (const cctvId of sortedCctvIds) {
+                    const cctvData = data[cctvId];
+                    
+                    // Baris untuk Arah Normal
+                    const normalData = cctvData.normal.cumulative || {};
+                    const normalRow = `
+                        <tr>
+                            <td rowspan="2" class="fw-bold">${cctvData.nama}</td>
+                            <td>⬇️ Normal</td>
+                            <td class="text-center">${normalData.kelas_1_sepeda_motor || 0}</td>
+                            <td class="text-center">${normalData.kelas_2_minibus_r4_pribadi_atau_elf || 0}</td>
+                            <td class="text-center">${normalData.kelas_3_kendaraan_berat || 0}</td>
+                            <td class="text-center">${normalData.kelas_4_bus_besar || 0}</td>
+                            <td class="text-center">${normalData.kelas_5_truk_besar || 0}</td>
+                            <td class="text-center fw-bold">${normalData.total || 0}</td>
+                        </tr>
+                    `;
+                    
+                    // Baris untuk Arah Opposite
+                    const oppositeData = cctvData.opposite.cumulative || {};
+                    const oppositeRow = `
+                        <tr class="table-group-divider">
+                            <td>⬆️ Opposite</td>
+                            <td class="text-center">${oppositeData.kelas_1_sepeda_motor || 0}</td>
+                            <td class="text-center">${oppositeData.kelas_2_minibus_r4_pribadi_atau_elf || 0}</td>
+                            <td class="text-center">${oppositeData.kelas_3_kendaraan_berat || 0}</td>
+                            <td class="text-center">${oppositeData.kelas_4_bus_besar || 0}</td>
+                            <td class="text-center">${oppositeData.kelas_5_truk_besar || 0}</td>
+                            <td class="text-center fw-bold">${oppositeData.total || 0}</td>
+                        </tr>
+                    `;
+
+                    tableBody.innerHTML += normalRow + oppositeRow;
+                }
+
+                // Update waktu terakhir refresh
+                const now = new Date();
+                document.getElementById('last-updated').innerText = `Update Terakhir: ${now.toLocaleTimeString('id-ID')}`;
+
+            })
+            .catch(error => {
+                console.error('Gagal mengambil data summary:', error);
+                const tableBody = document.getElementById('summary-table-body');
+                tableBody.innerHTML = '<tr><td colspan="8" class="text-center text-danger">Gagal memuat data. Pastikan worker sedang berjalan.</td></tr>';
+            });
+    }
+
+    // Panggil fungsi update setiap 10 detik
+    setInterval(updateSummary, 10000);
+    // Panggil juga saat halaman pertama kali dimuat
+    document.addEventListener('DOMContentLoaded', updateSummary);
+</script>
+{% endblock %}
