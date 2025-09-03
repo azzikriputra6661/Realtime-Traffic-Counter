@@ -15,6 +15,7 @@ from bs4 import BeautifulSoup
 import re
 import redis
 import numpy as np
+import argparse
 
 # --- KELAS UNTUK PERFORMA STREAMING ---
 class VideoStreamReader:
@@ -256,6 +257,34 @@ def process_cctv_stream(cctv_id, cctv_data):
             if vs: vs.stop()
             print(f"[{cctv_id}] Mencoba lagi dalam 60 detik...")
             time.sleep(60)
+            
+def display_menu_and_get_choices(cctv_config):
+    """Menampilkan menu CCTV dan meminta input dari pengguna."""
+    print("\n===== PILIH CCTV UNTUK DIPROSES =====")
+    
+    # Buat daftar CCTV yang bisa dipilih
+    cctv_options = list(cctv_config.keys())
+    for i, cctv_id in enumerate(cctv_options):
+        print(f"[{i+1}] {cctv_config[cctv_id].get('nama', cctv_id)}")
+    print("[A] Proses Semua CCTV")
+    print("=======================================")
+
+    while True:
+        choice_str = input("Masukkan nomor CCTV (pisahkan dengan koma jika lebih dari satu) atau 'A' untuk semua: ")
+        
+        if choice_str.strip().upper() == 'A':
+            return cctv_options # Kembalikan semua ID CCTV
+
+        try:
+            choices = [int(c.strip()) for c in choice_str.split(',')]
+            selected_cctvs = [cctv_options[i-1] for i in choices if 1 <= i <= len(cctv_options)]
+            
+            if selected_cctvs:
+                return selected_cctvs
+            else:
+                print("Pilihan tidak valid, coba lagi.")
+        except (ValueError, IndexError):
+            print("Input salah. Masukkan nomor yang valid, pisahkan dengan koma.")
 
 if __name__ == '__main__':
     print("--- MEMULAI WORKER ---")
@@ -295,19 +324,29 @@ if __name__ == '__main__':
             print(f"\nTerjadi error saat mencoba menulis file: {e}")
             print("Pastikan Anda memiliki write permission di folder ini.")
 
+    target_cctvs = display_menu_and_get_choices(CCTV_CONFIG)
+    
+    print(f"\nTarget CCTV yang dipilih: {', '.join(target_cctvs)}")
+
+    parser = argparse.ArgumentParser(description="Menjalankan Worker Penghitung CCTV.")
+    parser.add_argument(
+        'targets', 
+        nargs='*', # '*' berarti bisa menerima 0 atau lebih argumen
+        default=None, # Defaultnya None jika tidak ada target yang diberikan
+        help="ID CCTV yang ingin diproses. Jika kosong, proses semua."
+    )
+    args = parser.parse_args()
     
     threads = []
-    target_cctvs = ["cimayor_arah_cirebon", "cisero", "padasuka", "samoja_fix"]
-    
     for cctv_id in target_cctvs:
         if cctv_id in CCTV_CONFIG:
             cctv_data = CCTV_CONFIG[cctv_id]
             thread = threading.Thread(target=process_cctv_stream, args=(cctv_id, cctv_data), daemon=True)
             threads.append(thread)
             thread.start()
-            time.sleep(10)
+            time.sleep(2)
         else:
-            print(f"Peringatan: CCTV target '{cctv_id}' tidak ditemukan dalam konfigurasi.")
+            print(f"Peringatan: CCTV target '{cctv_id}' tidak ditemukan.")
 
     print(f"\n{len(threads)} thread worker telah dimulai. Biarkan terminal ini tetap berjalan.")
     try:
