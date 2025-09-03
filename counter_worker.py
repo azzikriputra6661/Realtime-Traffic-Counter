@@ -78,25 +78,6 @@ def get_all_fresh_stream_urls():
     except Exception as e:
         print(f" Terjadi error saat scraping URL: {e}"); return None
 
-def inisialisasi_database():
-    conn = sqlite3.connect(DB_FILE)
-    cursor = conn.cursor()
-    cursor.execute('''
-    CREATE TABLE IF NOT EXISTS traffic_stats_directional (
-        cctv_id TEXT NOT NULL, direction TEXT NOT NULL, 
-        kelas_1_sepeda_motor INTEGER DEFAULT 0,
-        kelas_2_minibus_r4_pribadi_atau_elf INTEGER DEFAULT 0, 
-        kelas_3_kendaraan_berat INTEGER DEFAULT 0, 
-        kelas_4_bus_besar INTEGER DEFAULT 0,
-        kelas_5_truk_besar INTEGER DEFAULT 0,
-        total INTEGER DEFAULT 0, start_time DATETIME, last_update DATETIME,
-        PRIMARY KEY (cctv_id, direction)
-    )
-    ''')
-    conn.commit()
-    conn.close()
-    print("Database 'traffic_stats_directional' siap digunakan oleh Worker.")
-
 def url_refresh_manager():
     global CCTV_CONFIG
     while True:
@@ -163,6 +144,33 @@ def inisialisasi_database():
     print("Database 'traffic_stats_directional' siap digunakan oleh Worker.")
 
 def process_cctv_stream(cctv_id, cctv_data):
+        # --- TAMBAHKAN BLOK INISIALISASI DATABASE DI SINI ---
+    try:
+        conn_init = sqlite3.connect(DB_FILE, timeout=10)
+        cursor_init = conn_init.cursor()
+        # Pastikan tabel utama ada
+        cursor_init.execute('''
+        CREATE TABLE IF NOT EXISTS traffic_stats_directional (
+            cctv_id TEXT NOT NULL, direction TEXT NOT NULL, 
+            kelas_1_sepeda_motor INTEGER DEFAULT 0,
+            kelas_2_minibus_r4_pribadi_atau_elf INTEGER DEFAULT 0, 
+            kelas_3_kendaraan_berat INTEGER DEFAULT 0, 
+            kelas_4_bus_besar INTEGER DEFAULT 0,
+            kelas_5_truk_besar INTEGER DEFAULT 0,
+            total INTEGER DEFAULT 0, start_time DATETIME, last_update DATETIME,
+            PRIMARY KEY (cctv_id, direction)
+        )
+        ''')
+        # Pastikan baris untuk CCTV ini ada
+        cursor_init.execute("INSERT OR IGNORE INTO traffic_stats_directional (cctv_id, direction) VALUES (?, 'normal')", (cctv_id,))
+        cursor_init.execute("INSERT OR IGNORE INTO traffic_stats_directional (cctv_id, direction) VALUES (?, 'opposite')", (cctv_id,))
+        conn_init.commit()
+        conn_init.close()
+    except Exception as e:
+        print(f"[{cctv_id}] GAGAL inisialisasi database di dalam thread: {e}")
+        return # Hentikan thread jika gagal inisialisasi
+    # --------------------------------------------------------  
+    
     url_stream = cctv_data.get('url')
     headers = {'Referer': 'https://atcs.sumedangkab.go.id/', 'User-Agent': 'Mozilla/5.0'}
     y_normal = cctv_data.get('y_normal', 500)
@@ -222,7 +230,8 @@ def process_cctv_stream(cctv_id, cctv_data):
                             if track[-1] >= y_normal and any(y < y_normal for y in track): direction = "normal"
                             elif track[-1] <= y_opposite and any(y > y_opposite for y in track): direction = "opposite"
                             if direction:
-                                crossed_ids.add(track_id); print(f"✅ [{cctv_id}] DIHITUNG ({direction.upper()}): {class_name}")
+                                crossed_ids.add(track_id)
+                                timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"); print(f"{timestamp} [{cctv_id}] DIHITUNG ({direction.upper()}): {class_name}")
                                 conn = sqlite3.connect(DB_FILE, timeout=10); cursor = conn.cursor()
                                 now_str = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                                 query = f"UPDATE traffic_stats_directional SET {db_class_name}={db_class_name}+1, total=total+1, start_time=COALESCE(start_time,?), last_update=? WHERE cctv_id=? AND direction=?"
@@ -252,18 +261,18 @@ if __name__ == '__main__':
     print("--- MEMULAI WORKER ---")
     
     # Langkah 1: Mencoba mengambil data URL dari web
-    print("\n[LANGKAH 1] Mencoba mengambil URL stream dari web...")
+    print("\nMencoba mengambil URL stream dari web...")
     CCTV_CONFIG = get_all_fresh_stream_urls()
 
     # Periksa apakah scraping berhasil
     if not CCTV_CONFIG:
-        print("\n[GAGAL] Tidak ada data CCTV yang berhasil diambil dari web. Proses berhenti.")
+        print("\nTidak ada data CCTV yang berhasil diambil dari web. Proses berhenti.")
         print("Pastikan koneksi internet Anda stabil dan situs ATCS bisa diakses.")
     else:
-        print(f"\n[BERHASIL] Berhasil mengambil {len(CCTV_CONFIG)} data CCTV dari web.")
+        print(f"\nBerhasil mengambil {len(CCTV_CONFIG)} data CCTV dari web.")
         
         # Langkah 2: Mencoba menggabungkan dengan config.json (jika ada)
-        print("\n[LANGKAH 2] Mencoba membaca config.json untuk metadata tambahan...")
+        print("\nMencoba membaca config.json untuk metadata tambahan...")
         try:
             with open('config.json', 'r', encoding='utf-8') as f:
                 cctv_metadata = json.load(f)
@@ -277,18 +286,18 @@ if __name__ == '__main__':
             print("Peringatan: config.json tidak ditemukan, melanjutkan tanpa metadata tambahan.")
         
         # Langkah 3: Mencoba menulis file cctv_config_latest.json
-        print("\n[LANGKAH 3] Mencoba menyimpan file cctv_config_latest.json...")
+        print("\nMencoba menyimpan file cctv_config_latest.json...")
         try:
             with open('cctv_config_latest.json', 'w', encoding='utf-8') as f:
                 json.dump(CCTV_CONFIG, f, indent=4, ensure_ascii=False)
-            print("\n[SUKSES] File 'cctv_config_latest.json' berhasil dibuat/diperbarui!")
+            print("\nFile 'cctv_config_latest.json' berhasil diperbarui!")
         except Exception as e:
-            print(f"\n[GAGAL] Terjadi error saat mencoba menulis file: {e}")
-            print("Pastikan Anda memiliki izin tulis (write permission) di folder ini.")
+            print(f"\nTerjadi error saat mencoba menulis file: {e}")
+            print("Pastikan Anda memiliki write permission di folder ini.")
 
     
     threads = []
-    target_cctvs = ["cimayor_arah_cirebon"]
+    target_cctvs = ["cimayor_arah_cirebon", "cisero", "padasuka", "samoja_fix"]
     
     for cctv_id in target_cctvs:
         if cctv_id in CCTV_CONFIG:
