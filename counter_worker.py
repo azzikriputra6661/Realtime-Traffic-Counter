@@ -106,7 +106,9 @@ def url_refresh_manager():
             existing_data = cctv_metadata.get(cctv_id, {})
             
             # Gabungkan: data lama di-update dengan data baru (URL)
-            existing_data.update(scraped_info)
+            final_data = scraped_info.copy() 
+            final_data.update(existing_data)
+            
             updated_config[cctv_id] = existing_data
         
         CCTV_CONFIG = updated_config

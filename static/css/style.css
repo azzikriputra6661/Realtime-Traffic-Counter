@@ -18,118 +18,67 @@ body {
     width: 100%;
 }
 
-/* NAVBAR BRE */
+/* NAVBAR */
 
 .cont-navbar {
+    display: flex;
+    height: 64px;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    padding: 1rem 2rem;
+    box-sizing: border-box;
+
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 75px;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: white;
+    color: #009999;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
     z-index: 10;
-    justify-content: space-between;
-    align-items: center;
-    box-sizing: border-box;
 }
 
-.cont-navbar .scrolled {
-    position: fixed;
-    background-color: #212529;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px
 }
 
 .ul-navbar {
-    display: flex;
-    justify-content: center;
     list-style: none;
-    align-items: center;
-    height: 75px;
-    /* background-color: yellow; */
+    margin: 0;
+    padding: 0;
+    display: flex;
 }
 
-.a-navbar {
-    color: var(--warna-putih);
-    /* background-color: tomato; */
+.nav-link {
+    color: #009999;
     list-style: none;
-    padding: 20px;
+    padding: 15px;
     margin: 5px;
     text-decoration: none;
+    font-size: 14px;
 }
 
-.a-navbar:hover {
-    color: #009999;
-    border-bottom: #009999 solid 2px;
+.nav-link:hover {
+    color: #FF6666;
     transition: color 0.3s ease, border-bottom 0.3s ease;
     /* cursor: pointer; */
 }
 
-.ul-navbar a.active {
-    color: #009999;
-    border-bottom: #009999 solid 2px;
-}
-
-/* NAVBAR SOLID BRE */
-
-.page-solid-nav .cont-navbar {
-    position: static;
-    /* background-color: greenyellow; */
-}
-
-.page-solid-nav .ul-navbar {
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    align-items: center;
-    height: 75px;
-    /* background-color: ; */
-}
-
-.page-solid-nav .navbar-left {
-    position: absolute;
-}
-
-.bi.bi-arrow-left {
-    color: var(--warna-putih); 
-}
-
-.bi.bi-arrow-left:hover {
-    color: black;
-    transition: color 0.3s ease;
-}
-
-.page-solid-nav .a-navbar {
-    color: var(--warna-putih);
-    /* background-color: tomato; */
-    list-style: none;
-    padding: 20px;
-    margin: 5px;
-    text-decoration: none;
-}
-
-.page-solid-nav .a-navbar:hover {
-    color: black;
-    border-bottom: black solid 2px;
-    transition: color 0.3s ease, border-bottom 0.3s ease;
-}
-
-.page-solid-nav .ul-navbar a.active {
-    color: black;
-    border-bottom: black solid 2px;
-}
-
-/* HERO NIH BRE */
+/* HERO*/
 
 .hero-section {
     height: 100vh;
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/background.jpg');
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url('../images/background.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     padding-left: 200px;
-    padding-bottom: 0px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0);
 }
 
 .hero-content {
@@ -157,21 +106,28 @@ body {
     color: white;
 }
 
-.hero-content .btn-cyan {
+.hero-buttons {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+    transform: translate(-725px, 165px);
+}
+
+.btn-cyan {
     background-color: var(--warna-cyan);
     color: var(--warna-putih);
-    font-size: 16px;
+    font-size: 12px;
     font-weight: 700;
-    padding: 12px 24px;
-    border-radius: 10px;
+    padding: 8px 24px;
+    border-radius: 5px;
     margin-top: 30px;
     text-decoration: none;
     background-image: linear-gradient(to bottom, var(--warna-cyan), #009999);
 }
 
-.hero-content .btn-cyan:hover {
+.btn-cyan:hover {
     background-color: var(--warna-putih);
-    color: #009999;
+    color: #FF6666;
     background-image: linear-gradient(to bottom, #FDFFFF, #A5A9A9);
 }
 
@@ -181,7 +137,7 @@ body {
     /* font-size: 30px; */
 }
 
-/* GALERI CCTV NIH BRE */
+/* GALERI CCTV */
 
 .section-title {
     font-size: 40px;
@@ -250,12 +206,64 @@ body {
 }
 
 .play-button:hover .play-button-icon {
-    fill: var(--warna-cyan);
+    fill: #FF6666;
 }
 
 /* CCTV VIEW */
 
-.detail-cctv .mb-4 {
-    /* background-color: red; */
-    /* width: 100%; */
+.cctv-content-wrapper {
+    padding-top: 75px;
+}
+
+/* DASHBOARD TRAFFIC */
+
+.content-wrapper {
+    padding-top: 50px;
+}
+
+.content-wrapper h1 {
+    font-size: 20px;
+    font-weight: 550;
+    margin-bottom: 20px;
+}
+
+.card {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+}
+
+.card-header {
+    text-align: center;
+    border-bottom: none;
+    background-color: white;
+    padding: 1rem 1.25re
+}
+
+.card-header h5 {
+    margin-bottom: 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.custom-legend {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    /* Jarak antar item legenda */
+    margin-top: 15px;
+    font-size: 0.8rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    /* Menyelaraskan kotak warna dan teks */
+}
+
+.legend-color-box {
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    margin-right: 8px;
+    border-radius: 1.5px;
+    /* Membuat sudut sedikit melengkung */
 }

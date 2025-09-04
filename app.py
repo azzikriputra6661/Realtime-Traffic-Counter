@@ -6,6 +6,7 @@ import redis
 import sqlite3
 import datetime
 import time
+from collections import defaultdict
 
 # --- Inisialisasi Aplikasi dan Konfigurasi ---
 app = Flask(__name__)
@@ -65,7 +66,7 @@ def calculate_stats_for_data(data_row):
 @app.route('/')
 def index():
     print(f"Total lokasi utama yang dimuat dari config: {len(CCTV_CONFIG)}")
-    return render_template('index.html', cctv_list=CCTV_CONFIG)
+    return render_template('index.html', active_page='index', cctv_list=CCTV_CONFIG)
 
 @app.route('/cctv/<cctv_id>')
 def cctv_view(cctv_id):
@@ -106,30 +107,47 @@ def get_traffic_stats(cctv_id):
 
 @app.route('/api/summary/all_active')
 def get_all_stats_summary():
-    conn = sqlite3.connect(DB_FILE); conn.row_factory = sqlite3.Row; cursor = conn.cursor()
+    conn = sqlite3.connect(DB_FILE)
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
     cursor.execute("SELECT * FROM traffic_stats_directional WHERE start_time IS NOT NULL ORDER BY cctv_id, direction")
     all_data = cursor.fetchall()
     conn.close()
 
-    summary = {}
+    summary = defaultdict(dict) # Gunakan defaultdict agar lebih mudah
+    
+    # Proses data dari database terlebih dahulu
     for row in all_data:
         cctv_id = row['cctv_id']
-        if cctv_id not in summary:
-            summary[cctv_id] = {
-                "nama": CCTV_CONFIG.get(cctv_id, {}).get('nama', cctv_id),
-                "normal": calculate_stats_for_data(None), # Default kosong
-                "opposite": calculate_stats_for_data(None) # Default kosong
-            }
-        
         direction = row['direction']
-        # Panggil fungsi bantuan yang sudah global
-        summary[cctv_id][direction] = calculate_stats_for_data(row)
+        summary[cctv_id][direction] = {
+            "cumulative": dict(row),
+        }
+    
+    # --- BAGIAN MODIFIKASI UTAMA ---
+    # Gabungkan dengan data dari config.json
+    summary_with_metadata = {}
+    for cctv_id, data in summary.items():
+        config_info = CCTV_CONFIG.get(cctv_id, {})
         
-    return jsonify(summary)
+        # Buat entri baru yang sudah lengkap
+        summary_with_metadata[cctv_id] = {
+            "nama": config_info.get("nama", cctv_id),
+            "label_normal": config_info.get("label_normal", "Arah Normal"),
+            "label_opposite": config_info.get("label_opposite", "Arah Opposite"),
+            "normal": data.get("normal", {}),
+            "opposite": data.get("opposite", {})
+        }
+        
+    return jsonify(summary_with_metadata)
 
 @app.route('/summary')
 def summary_view():
-    return render_template('traffic_count_view.html')
+    return render_template('traffic_count_view.html', active_page='summary')
+
+@app.route('/about')
+def about_view():
+    return render_template('about.html', active_page='about')
 
 if __name__ == '__main__':
     load_config()

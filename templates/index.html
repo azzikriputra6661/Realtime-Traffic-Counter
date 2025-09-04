@@ -1,7 +1,5 @@
 {% extends 'base.html' %}
-
-{% block title %}CCTV Lalu Lintas Sumedang{% endblock %}
-
+{% block title %}Realtime Traffic Counter{% endblock %}
 {% block content %}
 
 <div class="hero-section">
@@ -9,7 +7,11 @@
         <h1>Pantau CCTV <br> Lalu Lintas Sumedang <br> Terklasifikasi</h1>
         <p>Solusi cepat untuk memantau kondisi lalu lintas Sumedang secara langsung, aman, dan terkendali dengan
             teknologi Artificial Intelligent.</p>
-        <a href="#galeri-cctv" class="btn-cyan">Lihat CCTV →</a>
+    </div>
+
+    <div class="hero-buttons">
+        <a href="#galeri-cctv" class="btn-cyan">Lihat CCTV</a>
+        <a href="{{ url_for('summary_view') }}" class="btn-cyan">Traffic Count</a>
     </div>
 </div>
 
@@ -25,20 +27,20 @@
 
     <div class="cctv-grid-container">
         {% for id, data in cctv_list.items() %}
-            <div class="cctv-card">
-                <div class="card-thumbnail">
-                    <img src="{{ url_for('static', filename='images/thumbnail/' + data.get('thumbnail', 'default.png')) }}"
-                         alt="Thumbnail {{ data.get('nama', id) }}">
-                    
-                    <a href="{{ url_for('cctv_view', cctv_id=id) }}" class="play-button">
-                        <svg width="60" height="60" viewBox="0 0 60 60">
-                            <ellipse class="play-button-bg" cx="30" cy="30" rx="30" ry="30" />
-                            <polygon class="play-button-icon" points="25,20 40,30 25,40" />
-                        </svg>
-                    </a>
-                </div>
-                <h5 class="card-title">{{ data.get('nama', id.replace("_", " ").title()) }}</h5>
+        <div class="cctv-card">
+            <div class="card-thumbnail">
+                <img src="{{ url_for('static', filename='images/thumbnail/' + data.get('thumbnail', 'default.png')) }}"
+                    alt="Thumbnail {{ data.get('nama', id) }}">
+
+                <a href="{{ url_for('cctv_view', cctv_id=id) }}" class="play-button">
+                    <svg width="60" height="60" viewBox="0 0 60 60">
+                        <ellipse class="play-button-bg" cx="30" cy="30" rx="30" ry="30" />
+                        <polygon class="play-button-icon" points="25,20 40,30 25,40" />
+                    </svg>
+                </a>
             </div>
+            <h5 class="card-title">{{ data.get('nama', id.replace("_", " ").title()) }}</h5>
+        </div>
         {% endfor %}
     </div>
 </section>

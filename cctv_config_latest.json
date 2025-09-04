@@ -1,6 +1,6 @@
 {
     "alamsari_arah_cirebon": {
-        "nama": "Arah Cirebon",
+        "nama": "Alamsari Arah Cirebon",
         "url": "https://shinobi.sumedangkab.go.id/e0826c54459da877d4967ef1d0adfacf/hls/fMXW29kaZd/VvGm3WpNa3/s.m3u8",
         "thumbnail": "alamsari-arah-cirebon.png",
         "lat": -6.835459,
@@ -35,28 +35,28 @@
         "lon": 107.930447
     },
     "alun_alun_utara_1": {
-        "nama": "Alun-Alun Utara 1",
+        "nama": "Alun Alun Utara",
         "url": "https://shinobi.sumedangkab.go.id/e0826c54459da877d4967ef1d0adfacf/hls/fMXW29kaZd/ALUNALUNUTARAFIX1/s.m3u8",
         "thumbnail": "alun-alun-utara-1.png",
         "lat": -6.848246,
         "lon": 107.927344
     },
     "alun_alun_utara_2": {
-        "nama": "Alun-Alun Utara 2",
+        "nama": "Alun Alun Utara 2",
         "url": "https://shinobi.sumedangkab.go.id/e0826c54459da877d4967ef1d0adfacf/hls/fMXW29kaZd/ALUNALUNUTARAFIX2/s.m3u8",
         "thumbnail": "alun-alun-utara-2.png",
         "lat": -6.848263,
         "lon": 107.927358
     },
     "angkrek_fix_1": {
-        "nama": "ANGKREK FIX 1",
+        "nama": "Angkrek",
         "url": "https://shinobi.sumedangkab.go.id/8ad56f3667426cd2ba95a59bb3a8ce04/hls/fMXW29kaZd/2PzEEi5hR6/s.m3u8",
         "thumbnail": "angkrek-2.png",
         "lat": -6.842861,
         "lon": 107.925635
     },
     "angkrek_fix_2": {
-        "nama": "ANGKREK FIX 2",
+        "nama": "Angkrek 2",
         "url": "https://shinobi.sumedangkab.go.id/e0826c54459da877d4967ef1d0adfacf/hls/fMXW29kaZd/7IBg7XJCLR/s.m3u8",
         "thumbnail": "angkrek-2.png",
         "lat": -6.842861,
@@ -84,7 +84,7 @@
         "lon": 107.916633
     },
     "binokasih_fix_3": {
-        "nama": "Binokasih Fix 3",
+        "nama": "Binokasih",
         "url": "https://shinobi.sumedangkab.go.id/e0826c54459da877d4967ef1d0adfacf/hls/fMXW29kaZd/Gcga8Gq1Bg/s.m3u8",
         "thumbnail": "binokasih.png",
         "lat": -6.860499,
@@ -98,7 +98,7 @@
         "lon": 107.922343
     },
     "bni_1": {
-        "nama": "BNI 1",
+        "nama": "BNI",
         "url": "https://shinobi.sumedangkab.go.id/e0826c54459da877d4967ef1d0adfacf/hls/fMXW29kaZd/BNIFIX1/s.m3u8",
         "thumbnail": "bni.png",
         "lat": -6.852848,
@@ -119,22 +119,26 @@
         "lon": 107.924513
     },
     "cimayor_arah_cirebon": {
-        "nama": "Cimayor Arah Cirebon",
+        "nama": "Cimayor",
         "url": "https://shinobi.sumedangkab.go.id/09eddeae76d2f344263889356cb6f0e4/hls/fMXW29kaZd/HnhfzqGh0y/s.m3u8",
         "thumbnail": "cimayor-arah-cirebon.png",
         "lat": -6.832738,
         "lon": 107.935421,
         "y_normal": 705,
-        "y_opposite": 800
+        "y_opposite": 800,
+        "label_normal": "Kendaraan Arah Cirebon",
+        "label_opposite": "Kendaraan Arah Sumedang Kota"
     },
     "cisero": {
-        "nama": "CISERO",
+        "nama": "Cisero",
         "url": "https://shinobi.sumedangkab.go.id/e0826c54459da877d4967ef1d0adfacf/hls/fMXW29kaZd/nJ1wvySF6j/s.m3u8",
         "thumbnail": "cisero.png",
         "lat": -6.832668,
         "lon": 107.92706,
         "y_normal": 805,
-        "y_opposite": 900
+        "y_opposite": 900,
+        "label_normal": "Kendaraan Arah Wado",
+        "label_opposite": "Kendaraan Arah Sumedang Kota"
     },
     "dishub_arah_bandung": {
         "nama": "Dishub Arah Bandung",
@@ -151,93 +155,95 @@
         "lon": 107.927092
     },
     "griya_fix_1": {
-        "nama": "GRIYA FIX 1",
+        "nama": "Griya",
         "url": "https://shinobi.sumedangkab.go.id/e0826c54459da877d4967ef1d0adfacf/hls/fMXW29kaZd/GRIYAFIX1/s.m3u8",
         "thumbnail": "griya-1.png",
         "lat": -6.840485,
         "lon": 107.926002
     },
     "griya_fix_2": {
-        "nama": "GRIYA FIX 2",
+        "nama": "Griya 2",
         "url": "https://shinobi.sumedangkab.go.id/e0826c54459da877d4967ef1d0adfacf/hls/fMXW29kaZd/GRIYAFIX2/s.m3u8",
         "thumbnail": "griya-2.png",
         "lat": -6.840499,
         "lon": 107.925997
     },
     "kejaksaan_fix_1": {
-        "nama": "KEJAKSAAN Fix 1",
+        "nama": "Kejaksaan",
         "url": "https://shinobi.sumedangkab.go.id/e0826c54459da877d4967ef1d0adfacf/hls/fMXW29kaZd/SKEJAKSAANFIX1/s.m3u8",
         "thumbnail": "kejaksaan.png",
         "lat": -6.859165,
         "lon": 107.92148
     },
     "kejaksaan_fix_2": {
-        "nama": "KEJAKSAAN Fix 2",
+        "nama": "Kejaksaan 2",
         "url": "https://shinobi.sumedangkab.go.id/e0826c54459da877d4967ef1d0adfacf/hls/fMXW29kaZd/KEJAKSAANFIX2/s.m3u8",
         "thumbnail": "kejaksaan-2.png",
         "lat": -6.859165,
         "lon": 107.92148
     },
     "lapas_fix": {
-        "nama": "Lapas Fix",
+        "nama": "Lapas",
         "url": "https://shinobi.sumedangkab.go.id/e0826c54459da877d4967ef1d0adfacf/hls/fMXW29kaZd/LAPASFIX1/s.m3u8",
         "thumbnail": "lapas.png",
         "lat": -6.839252,
         "lon": 107.926573
     },
     "mpp_1": {
-        "nama": "MPP 1",
+        "nama": "MPP",
         "url": "https://shinobi.sumedangkab.go.id/e0826c54459da877d4967ef1d0adfacf/hls/fMXW29kaZd/MPPFIX/s.m3u8",
         "thumbnail": "ptz-mpp.png",
         "lat": -6.860252,
         "lon": 107.920244
     },
     "ojolali_fix_1": {
-        "nama": "OJOLALI FIX 1",
+        "nama": "Ojolali",
         "url": "https://shinobi.sumedangkab.go.id/e0826c54459da877d4967ef1d0adfacf/hls/fMXW29kaZd/OJOLALIFIX1/s.m3u8",
         "thumbnail": "ojolali.png",
         "lat": -6.841063,
         "lon": 107.925815
     },
     "ojolali_fix_2": {
-        "nama": "OJOLALI FIX 2",
+        "nama": "Ojolali 2",
         "url": "https://shinobi.sumedangkab.go.id/e0826c54459da877d4967ef1d0adfacf/hls/fMXW29kaZd/OJOLALIFIX2/s.m3u8",
-        "thumbnail": "ojolali-2.png",
+        "thumbnail": "ojolali.png",
         "lat": -6.841063,
         "lon": 107.925815
     },
     "padasuka": {
-        "nama": "PADASUKA",
+        "nama": "Padasuka",
         "url": "https://shinobi.sumedangkab.go.id/e0826c54459da877d4967ef1d0adfacf/hls/fMXW29kaZd/tkvPVkAcVD/s.m3u8",
         "thumbnail": "padasuka.png",
         "lat": -6.849573,
         "lon": 107.92332,
         "y_normal": 805,
-        "y_opposite": 900
+        "y_opposite": 900,
+        "label_normal": "Kendaraan Arah Subang",
+        "label_opposite": "Kendaraan Arah Sumedang Kota"
     },
     "pajaji_fix_1": {
-        "nama": "Pajaji Fix 1",
+        "nama": "Pajaji",
         "url": "https://shinobi.sumedangkab.go.id/e0826c54459da877d4967ef1d0adfacf/hls/fMXW29kaZd/PAJAJIFIX1/s.m3u8",
         "thumbnail": "pajaji-2.png",
         "lat": -6.849863,
         "lon": 107.92332
     },
     "pajaji_fix_2": {
-        "nama": "Pajaji Fix 2",
+        "nama": "Pajaji 2",
         "url": "https://shinobi.sumedangkab.go.id/e0826c54459da877d4967ef1d0adfacf/hls/fMXW29kaZd/PAJAJIFIX2/s.m3u8",
         "thumbnail": "pajaji-2.png",
         "lat": -6.849863,
         "lon": 107.92332
     },
     "pasifik": {
-        "nama": "PASIFIK",
+        "nama": "Pasifik",
         "url": "https://shinobi.sumedangkab.go.id/e0826c54459da877d4967ef1d0adfacf/hls/fMXW29kaZd/TENDOGFIX3/s.m3u8",
         "thumbnail": "pasifik.png",
         "lat": -6.847573,
         "lon": 107.924689
     },
     "pkb_fix_1": {
-        "nama": "PKB Fix 1",
+        "nama": "PKB Rancapurut",
         "url": "https://shinobi.sumedangkab.go.id/e0826c54459da877d4967ef1d0adfacf/hls/fMXW29kaZd/mTrvlky6xa80/s.m3u8",
         "thumbnail": "pkb-rancapurut.png",
         "lat": -6.856792,
@@ -258,13 +264,15 @@
         "lon": 107.921725
     },
     "samoja_fix": {
-        "nama": "Samoja Fix",
+        "nama": "Samoja",
         "url": "https://shinobi.sumedangkab.go.id/e0826c54459da877d4967ef1d0adfacf/hls/fMXW29kaZd/samojafix1/s.m3u8",
         "thumbnail": "samoja.png",
         "lat": -6.863487,
         "lon": 107.897118,
         "y_normal": 805,
-        "y_opposite": 900
+        "y_opposite": 900,
+        "label_normal": "Kendaraan Arah Bandung",
+        "label_opposite": "Kendaraan Arah Sumedang"
     },
     "taman_endog_arah_bandung": {
         "nama": "Taman Endog Arah Bandung",
@@ -281,35 +289,35 @@
         "lon": 107.925588
     },
     "taman_endog_fix_1": {
-        "nama": "Taman Endog Fix 1",
+        "nama": "Taman Endog",
         "url": "https://shinobi.sumedangkab.go.id/e0826c54459da877d4967ef1d0adfacf/hls/fMXW29kaZd/TENDOG2FIX1/s.m3u8",
         "thumbnail": "taman-endog.png",
         "lat": -6.841634,
         "lon": 107.925588
     },
     "taman_endog_fix_2": {
-        "nama": "Taman Endog Fix 2",
+        "nama": "Taman Endog 2",
         "url": "https://shinobi.sumedangkab.go.id/e0826c54459da877d4967ef1d0adfacf/hls/fMXW29kaZd/TENDOG2FIX2/s.m3u8",
         "thumbnail": "taman-endog-2.png",
         "lat": -6.841634,
         "lon": 107.925588
     },
     "taman_endog_fix_4": {
-        "nama": "Taman Endog Fix 4",
+        "nama": "Taman Endog 3",
         "url": "https://shinobi.sumedangkab.go.id/e0826c54459da877d4967ef1d0adfacf/hls/fMXW29kaZd/TENDOGFIX4/s.m3u8",
         "thumbnail": "taman-endog-4.png",
         "lat": -6.841634,
         "lon": 107.925588
     },
     "upi_fix_1": {
-        "nama": "UPI FIX 1",
+        "nama": "UPI",
         "url": "https://shinobi.sumedangkab.go.id/09eddeae76d2f344263889356cb6f0e4/hls/fMXW29kaZd/UPIFIX1/s.m3u8",
         "thumbnail": "upi.png",
         "lat": -6.835659,
         "lon": 107.930361
     },
     "upi_fix_2": {
-        "nama": "UPI FIX 2",
+        "nama": "UPI 2",
         "url": "https://shinobi.sumedangkab.go.id/09eddeae76d2f344263889356cb6f0e4/hls/fMXW29kaZd/UPIFIX2/s.m3u8",
         "thumbnail": "upi-2.png",
         "lat": -6.835659,
