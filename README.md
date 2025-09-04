@@ -45,41 +45,39 @@ Cara termudah dan paling direkomendasikan untuk menjalankan aplikasi ini adalah 
 * **Docker Desktop** terinstal dan sedang berjalan.
 
 ### Langkah 1: Clone Repositori
-git clone [https://github.com/azzikriputra6661/Realtime-Traffic-Counter.git](https://github.com/azzikriputra6661/Realtime-Traffic-Counter.git)
-cd Realtime-Traffic-Counter/web_prototype
+`git clone [https://github.com/azzikriputra6661/Realtime-Traffic-Counter.git](https://github.com/azzikriputra6661/Realtime-Traffic-Counter.git)`
+`cd Realtime-Traffic-Counter/web_prototype`
 
 ### Langkah 2: Siapkan File yang Diperlukan
 Pastikan file-file berikut sudah ada di dalam folder web_prototype:
 
-Dockerfile: Resep untuk membangun image aplikasi.
+* **`Dockerfile`: Resep untuk membangun image aplikasi.**
 
-docker-compose.yml: Konfigurasi untuk menjalankan semua layanan (worker, web, redis).
+* **`docker-compose.yml`: Konfigurasi untuk menjalankan semua layanan (worker, web, redis).**
 
-requirements.txt: Daftar semua library Python yang dibutuhkan.
+* **`requirements.txt:` Daftar semua library Python yang dibutuhkan.**
 
-config.json: File konfigurasi metadata CCTV (nama, thumbnail, koordinat, dll).
+* **`config.json`: File konfigurasi metadata CCTV (nama, thumbnail, koordinat, dll).**
 
-Model AI Anda (misalnya best.pt).
+* **Model AI Anda**
 
 ### Langkah 3: Jalankan Aplikasi dengan Docker Compose
-Buka terminal di dalam folder web_prototype dan jalankan satu perintah:
+* **Buka terminal di dalam folder web_prototype dan jalankan satu perintah:**
 
-Bash
+`docker-compose up --build -d`
+* **`--build`: Memaksa Docker untuk membangun image baru berdasarkan Dockerfile Anda.**
 
-docker-compose up --build -d
---build: Memaksa Docker untuk membangun image baru berdasarkan Dockerfile Anda.
-
--d: Menjalankan kontainer di latar belakang (detached mode).
+* **`-d`: Menjalankan kontainer di latar belakang (detached mode).**
 
 Setelah beberapa saat, semua layanan akan berjalan.
 
 ### Langkah 4: Akses Aplikasi
 Aplikasi web dapat diakses melalui browser di alamat:
-http://localhost:5000
+`http://localhost:5000`
 
 ## Panduan Instalasi & Menjalankan (Tanpa Docker)
 
-Berikut adalah panduan untuk menjalankan aplikasi ini di server VPS (Linux).
+Berikut adalah panduan untuk menjalankan aplikasi ini di server VPS (Tanpa Docker).
 
 ### Prasyarat
 
@@ -120,5 +118,3 @@ Berikut adalah panduan untuk menjalankan aplikasi ini di server VPS (Linux).
 ### Langkah 4: Akses Aplikasi
 * **Setelah kedua proses berjalan, aplikasi web dapat diakses melalui browser di alamat:**
 `http://IP_SERVER_ANDA:5000`
-
-Dikembangkan oleh azzikriputra6661 untuk program magang di Diskominfosanditik Sumedang - 2025.
