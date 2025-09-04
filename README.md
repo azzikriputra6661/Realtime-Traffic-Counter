@@ -55,10 +55,26 @@ cd Realtime-Traffic-Counter/web_prototype
 ### Langkah 2: Setup Lingkungan (Metode Virtual Environment)
 
 * **Buat virtual environment**
-*`python3 -m venv venv_gpu`
+`python3 -m venv venv_gpu`
 
 * **Aktifkan environment**
-*`source venv_gpu/bin/activate`
+`source venv_gpu/bin/activate`
 
 * **Install semua library yang dibutuhkan**
-*`pip install -r requirements.txt`
+`pip install -r requirements.txt`
+
+### Langkah 3: Jalankan Aplikasi
+* **Aplikasi ini terdiri dari dua proses utama yang harus berjalan secara bersamaan, idealnya di dua terminal terpisah (menggunakan screen atau tmux di server sangat disarankan).**
+
+* **Terminal 1: Jalankan Counter Worker**
+* **Worker akan memulai proses AI di latar belakang. Anda bisa memilih CCTV mana yang akan dipantau.**
+`python counter_worker.py`
+
+* **Terminal 2: Jalankan Web Server Flask**
+`python app.py`
+
+* **Jalankan web server menggunakan Gunicorn untuk produksi**
+* **gunicorn --bind 0.0.0.0:5000 app:app**
+* **Langkah 4: Akses Aplikasi**
+* **Setelah kedua proses berjalan, aplikasi web dapat diakses melalui browser di alamat:**
+* **http://IP_SERVER_ANDA:5000**
