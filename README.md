@@ -62,7 +62,7 @@ Pastikan file-file berikut sudah ada di dalam folder web_prototype:
 * **Model AI Anda**
 
 ### Langkah 3: Jalankan Aplikasi dengan Docker Compose
-* **Buka terminal di dalam folder web_prototype dan jalankan satu perintah:**
+Buka terminal di dalam folder web_prototype dan jalankan satu perintah:
 
 `docker-compose up --build -d`
 * **`--build`: Memaksa Docker untuk membangun image baru berdasarkan Dockerfile Anda.**
