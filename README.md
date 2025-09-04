@@ -73,7 +73,7 @@ Berikut adalah panduan untuk menjalankan aplikasi ini di server VPS (Linux).
 * **Terminal 2: Jalankan Web Server Flask**
 `python app.py`
 
-* **Jalankan web server menggunakan Gunicorn untuk produksi**
+* Jalankan web server menggunakan Gunicorn untuk produksi
 `gunicorn --bind 0.0.0.0:5000 app:app`
 
 ### Langkah 4: Akses Aplikasi
