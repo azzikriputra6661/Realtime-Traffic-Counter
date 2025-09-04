@@ -1,4 +1,4 @@
-Realtime Traffic Counter Prototype
+## Realtime Traffic Counter Prototype
 
 Prototipe ini dikembangkan sebagai bagian dari program magang di Diskominfosanditik Kabupaten Sumedang. Sistem ini bertujuan untuk menyediakan solusi otomatis untuk mendeteksi, melacak, dan menghitung volume kendaraan berdasarkan klasifikasi dari stream CCTV ATCS Dishub.
 
