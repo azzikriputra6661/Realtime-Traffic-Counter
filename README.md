@@ -16,9 +16,9 @@ Sistem ini dibangun dengan arsitektur *worker-server* yang terpisah untuk memast
 2.  **`app.py` (Web Server / Dasbor):**
     * Berjalan sebagai aplikasi web menggunakan **Flask**.
     * Menampilkan *dashboard* interaktif yang berisi:
-        * Galeri CCTV dengan peta lokasi.
-        * Tampilan *live stream* yang telah diolah oleh *worker*.
-        * Dasbor rekapitulasi dengan grafik jumlah kendaraan.
+    * Galeri CCTV dengan peta lokasi.
+    * Tampilan *live stream* yang telah diolah oleh *worker*.
+    * Dasbor rekapitulasi dengan grafik jumlah kendaraan.
     * Menyediakan **API** untuk diakses oleh *frontend* guna menampilkan data *real-time*.
 
 ## Tech Stack
@@ -49,6 +49,16 @@ Berikut adalah panduan untuk menjalankan aplikasi ini di server VPS (Linux).
 
 ### Langkah 1: Clone Repositori
 
-```bash
 git clone [https://github.com/azzikriputra6661/Realtime-Traffic-Counter.git](https://github.com/azzikriputra6661/Realtime-Traffic-Counter.git)
 cd Realtime-Traffic-Counter/web_prototype
+
+### Langkah 2: Setup Lingkungan (Metode Virtual Environment)
+
+1. **Buat virtual environment**
+python3 -m venv venv_gpu
+
+2. **Aktifkan environment**
+source venv_gpu/bin/activate
+
+3. **Install semua library yang dibutuhkan**
+pip install -r requirements.txt
