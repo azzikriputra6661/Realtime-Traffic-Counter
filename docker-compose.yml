@@ -1,0 +1,34 @@
+# File: docker-compose.yml
+
+version: '3.8'
+
+services:
+  # Layanan 1: Redis
+  redis:
+    image: "redis:alpine"
+    ports:
+      - "6379:6379"
+
+  # Layanan 2: Counter Worker (Proses AI)
+  worker:
+    build: .
+    command: python counter_worker.py
+    # Jika Anda ingin memilih target CCTV secara manual saat startup:
+    # command: /bin/sh -c "python counter_worker.py"
+    # stdin_open: true # membuat terminal interaktif
+    # tty: true      # idem
+    volumes:
+      - .:/app
+    depends_on:
+      - redis
+
+  # Layanan 3: Web App Flask
+  web:
+    build: .
+    command: gunicorn --bind 0.0.0.0:5000 app:app
+    volumes:
+      - .:/app
+    ports:
+      - "5000:5000"
+    depends_on:
+      - worker

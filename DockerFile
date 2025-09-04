@@ -1,0 +1,18 @@
+# File: Dockerfile
+
+# Gunakan image dasar Python yang ringan
+FROM python:3.11-slim
+
+# Atur direktori kerja di dalam kontainer
+WORKDIR /app
+
+# Salin file requirements.txt terlebih dahulu untuk caching
+COPY requirements.txt .
+
+# Install semua library yang dibutuhkan
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Salin seluruh isi folder proyek ke dalam kontainer
+COPY . .
+
+# (Port tidak perlu di-expose di sini, akan diatur oleh Docker Compose)
