@@ -45,8 +45,8 @@ Cara termudah dan paling direkomendasikan untuk menjalankan aplikasi ini adalah 
 * **Docker Desktop** terinstal dan sedang berjalan.
 
 ### Langkah 1: Clone Repositori
-`git clone [https://github.com/azzikriputra6661/Realtime-Traffic-Counter.git](https://github.com/azzikriputra6661/Realtime-Traffic-Counter.git)`
-`cd Realtime-Traffic-Counter/web_prototype`
+* `git clone` [https://github.com/azzikriputra6661/Realtime-Traffic-Counter.git](https://github.com/azzikriputra6661/Realtime-Traffic-Counter.git)
+* `cd` Realtime-Traffic-Counter/web_prototype
 
 ### Langkah 2: Siapkan File yang Diperlukan
 Pastikan file-file berikut sudah ada di dalam folder web_prototype:
@@ -88,8 +88,8 @@ Berikut adalah panduan untuk menjalankan aplikasi ini di server VPS (Tanpa Docke
 
 ### Langkah 1: Clone Repositori
 
-`git clone [https://github.com/azzikriputra6661/Realtime-Traffic-Counter.git](https://github.com/azzikriputra6661/Realtime-Traffic-Counter.git)`
-`cd Realtime-Traffic-Counter/web_prototype`
+* `git clone` [https://github.com/azzikriputra6661/Realtime-Traffic-Counter.git](https://github.com/azzikriputra6661/Realtime-Traffic-Counter.git)
+* `cd` Realtime-Traffic-Counter/web_prototype
 
 ### Langkah 2: Setup Lingkungan (Metode Virtual Environment)
 
