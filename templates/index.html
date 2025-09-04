@@ -57,7 +57,6 @@
 
     var cctvData = {{ cctv_list| tojson | safe }};
 
-    // PERBAIKAN: Loop melalui setiap CCTV secara langsung
     for (const [id, data] of Object.entries(cctvData)) {
         if (data.lat && data.lon) {
             var marker = L.marker([data.lat, data.lon]).addTo(map);

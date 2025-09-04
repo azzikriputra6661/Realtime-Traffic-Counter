@@ -10,7 +10,7 @@ from collections import defaultdict
 
 # --- Inisialisasi Aplikasi dan Konfigurasi ---
 app = Flask(__name__)
-DB_FILE = r"E:/GeminkDanLainLain/Tugas gwej/TOPIK MAGANG/REALTIME TRAFFIC COUNTER/web_prototype/traffic_data.db"
+DB_FILE = "traffic_data.db"
 REDIS_HOST = 'localhost'
 REDIS_PORT = 6379
 CCTV_CONFIG = {}

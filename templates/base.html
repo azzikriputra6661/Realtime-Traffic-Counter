@@ -71,21 +71,12 @@
 
         window.addEventListener('scroll', () => {
 
-            // Dapatkan posisi atas dari seksi galeri
             const galeriTopPosition = galeriSection.offsetTop;
-
-            // Dapatkan posisi scroll pengguna saat ini
             const scrollPosition = window.scrollY;
-
-            // Beri sedikit toleransi (offset), misalnya setinggi navbar
             const offset = 100;
-
-            // Cek jika posisi scroll vertikal lebih besar dari tinggi hero section
             if (window.scrollY > heroSection.offsetHeight) {
-                // Jika ya, tambahkan kelas .scrolled ke navbar
                 navbar.classList.add('scrolled');
             } else {
-                // Jika tidak, hapus kelas .scrolled dari navbar
                 navbar.classList.remove('scrolled');
             }
         });

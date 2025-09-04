@@ -39,7 +39,7 @@ class VideoStreamReader:
 
 # --- KONFIGURASI AWAL ---
 print("Memulai Inisialisasi Worker Penghitung Lalu Lintas...")
-DB_FILE = r"E:/GeminkDanLainLain/Tugas gwej/TOPIK MAGANG/REALTIME TRAFFIC COUNTER/web_prototype/traffic_data.db"
+DB_FILE = "traffic_data.db"
 MODEL = YOLO('best1.pt') 
 ATCS_PAGE_URL = "https://atcs.sumedangkab.go.id/lokasicctv"
 CLASS_MAPPING = {
@@ -50,11 +50,11 @@ CLASS_MAPPING = {
     "Kelas 5 Truk Besar": "kelas_5_truk_besar"
 }
 COLOR_MAPPING = {
-    "Kelas 1 Sepeda Motor": (255, 0, 0),      # Biru
-    "Kelas 2 Minibus R4 Pribadi atau Elf": (0, 255, 0), # Hijau
-    "Kelas 3 Kendaraan Berat": (0, 165, 255), # Oranye
-    "Kelas 4 Bus Besar": (0, 0, 255),      # Merah
-    "Kelas 5 Truk Besar": (255, 0, 255)    # Magenta
+    "Kelas 1 Sepeda Motor": (255, 0, 0),
+    "Kelas 2 Minibus R4 Pribadi atau Elf": (0, 255, 0),
+    "Kelas 3 Kendaraan Berat": (0, 165, 255),
+    "Kelas 4 Bus Besar": (0, 0, 255),
+    "Kelas 5 Truk Besar": (255, 0, 255)
 }
 REDIS_HOST = 'localhost'; REDIS_PORT = 6379; CCTV_CONFIG = {}
 
@@ -88,10 +88,10 @@ def url_refresh_manager():
         scraped_data = get_all_fresh_stream_urls()
         if not scraped_data:
             print("Gagal mengambil URL baru, mencoba lagi nanti.")
-            time.sleep(3600) # Coba lagi 1 jam kemudian
+            time.sleep(3600)
             continue
 
-        # 2. Baca file config.json asli yang berisi metadata (thumbnail, lat, lon)
+        # 2. Baca file config.json
         try:
             with open('config.json', 'r', encoding='utf-8') as f:
                 cctv_metadata = json.load(f)
@@ -147,7 +147,6 @@ def inisialisasi_database():
     print("Database 'traffic_stats_directional' siap digunakan oleh Worker.")
 
 def process_cctv_stream(cctv_id, cctv_data):
-        # --- TAMBAHKAN BLOK INISIALISASI DATABASE DI SINI ---
     try:
         conn_init = sqlite3.connect(DB_FILE, timeout=10)
         cursor_init = conn_init.cursor()
@@ -164,7 +163,6 @@ def process_cctv_stream(cctv_id, cctv_data):
             PRIMARY KEY (cctv_id, direction)
         )
         ''')
-        # Pastikan baris untuk CCTV ini ada
         cursor_init.execute("INSERT OR IGNORE INTO traffic_stats_directional (cctv_id, direction) VALUES (?, 'normal')", (cctv_id,))
         cursor_init.execute("INSERT OR IGNORE INTO traffic_stats_directional (cctv_id, direction) VALUES (?, 'opposite')", (cctv_id,))
         conn_init.commit()
@@ -272,7 +270,7 @@ def display_menu_and_get_choices(cctv_config):
     print("=======================================")
 
     while True:
-        choice_str = input("Masukkan nomor CCTV (pisahkan dengan koma jika lebih dari satu) atau 'A' untuk semua: ")
+        choice_str = input("Masukkan nomor CCTV (Untuk keperluan Dishub disarankan memilih nomor CCTV 18, 19, 30, 37): ")
         
         if choice_str.strip().upper() == 'A':
             return cctv_options # Kembalikan semua ID CCTV

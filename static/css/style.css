@@ -82,7 +82,7 @@ body {
 }
 
 .hero-content {
-    color: white;
+    color: #ffffff;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -94,7 +94,7 @@ body {
     font-weight: 700;
     line-height: 1.2;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    color: white;
+    color: #00d6d6;
 }
 
 .hero-content p {
@@ -103,7 +103,7 @@ body {
     max-width: 600px;
     margin-top: 20px;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-    color: white;
+    color: #0cc2c2;
 }
 
 .hero-buttons {
@@ -123,18 +123,13 @@ body {
     margin-top: 30px;
     text-decoration: none;
     background-image: linear-gradient(to bottom, var(--warna-cyan), #009999);
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
 }
 
 .btn-cyan:hover {
     background-color: var(--warna-putih);
     color: #FF6666;
     background-image: linear-gradient(to bottom, #FDFFFF, #A5A9A9);
-}
-
-/* OPENMAP */
-
-.openmap .my-5 {
-    /* font-size: 30px; */
 }
 
 /* GALERI CCTV */
@@ -212,7 +207,7 @@ body {
 /* CCTV VIEW */
 
 .cctv-content-wrapper {
-    padding-top: 75px;
+    padding-top: 50px;
 }
 
 /* DASHBOARD TRAFFIC */

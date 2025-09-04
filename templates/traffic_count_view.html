@@ -149,9 +149,7 @@
             });
     }
 
-    // Panggil fungsi update setiap 10 detik
     setInterval(updateSummary, 10000);
-    // Panggil juga saat halaman pertama kali dimuat
     document.addEventListener('DOMContentLoaded', updateSummary);
 </script>
 {% endblock %}
