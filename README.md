@@ -7,14 +7,14 @@ Arsitektur Sistem
 Sistem ini dibangun dengan arsitektur *worker-server* yang terpisah untuk memastikan skalabilitas dan efisiensi:
 
 1.  **`counter_worker.py` (Worker / Prosesor AI):**
-    * Berjalan sebagai proses *background* yang terus-menerus.
+    * **Berjalan sebagai proses *background* yang terus-menerus.**
     * Secara otomatis mengambil URL stream CCTV terbaru dari situs ATCS.
     * Menggunakan model AI **YOLOv8** yang telah di-*fine-tune* untuk mendeteksi dan melacak kendaraan.
     * Menyimpan data hasil penghitungan ke dalam database **SQLite**.
     * (Pengembangan Lanjutan) Menyiarkan *frame* video yang telah diproses melalui **Redis**.
 
 2.  **`app.py` (Web Server / Dasbor):**
-    * Berjalan sebagai aplikasi web menggunakan **Flask**.
+    * **Berjalan sebagai aplikasi web menggunakan **Flask**.**
     * Menampilkan *dashboard* interaktif yang berisi:
     * Galeri CCTV dengan peta lokasi.
     * Tampilan *live stream* yang telah diolah oleh *worker*.
@@ -73,7 +73,7 @@ Berikut adalah panduan untuk menjalankan aplikasi ini di server VPS (Linux).
 * **Terminal 2: Jalankan Web Server Flask**
 `python app.py`
 
-* Jalankan web server menggunakan Gunicorn untuk produksi
+* **Jalankan web server menggunakan Gunicorn untuk produksi**
 `gunicorn --bind 0.0.0.0:5000 app:app`
 
 ### Langkah 4: Akses Aplikasi
