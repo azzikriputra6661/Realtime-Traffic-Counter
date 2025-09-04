@@ -76,6 +76,10 @@ Berikut adalah panduan untuk menjalankan aplikasi ini di server VPS (Linux).
 * **Jalankan web server menggunakan Gunicorn untuk produksi**
 `gunicorn --bind 0.0.0.0:5000 app:app`
 
+### Langkah 4: Akses Aplikasi
+* **Setelah kedua proses berjalan, aplikasi web dapat diakses melalui browser di alamat:**
+`http://IP_SERVER_ANDA:5000`
+
 ### Cara Cepat Menjalankan (Untuk Windows)
 
 Jika Anda menjalankan proyek ini di lingkungan Windows dan sudah menyelesaikan semua langkah setup di atas, Anda bisa menggunakan skrip `run.bat` untuk memulai semua layanan secara otomatis dengan satu kali klik.
@@ -88,7 +92,3 @@ Jika Anda menjalankan proyek ini di lingkungan Windows dan sudah menyelesaikan s
 4.  **Akses Aplikasi:** Setelah kedua jendela berjalan, buka browser dan akses `http://127.0.0.1:5000`.
 
 **Catatan:** Skrip ini dirancang untuk kemudahan penggunaan di lingkungan pengembangan lokal. Untuk *deployment* di server produksi (Linux), ikuti panduan `systemd` atau **Docker Compose**.
-
-### Langkah 4: Akses Aplikasi
-* **Setelah kedua proses berjalan, aplikasi web dapat diakses melalui browser di alamat:**
-`http://IP_SERVER_ANDA:5000`
