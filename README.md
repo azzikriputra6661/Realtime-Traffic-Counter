@@ -74,8 +74,8 @@ Berikut adalah panduan untuk menjalankan aplikasi ini di server VPS (Linux).
 `python app.py`
 
 * **Jalankan web server menggunakan Gunicorn untuk produksi**
-* **gunicorn --bind 0.0.0.0:5000 app:app**
+`gunicorn --bind 0.0.0.0:5000 app:app`
 
 ### Langkah 4: Akses Aplikasi**
 * **Setelah kedua proses berjalan, aplikasi web dapat diakses melalui browser di alamat:**
-* **http://IP_SERVER_ANDA:5000**
+`http://IP_SERVER_ANDA:5000`
