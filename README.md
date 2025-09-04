@@ -49,8 +49,8 @@ Berikut adalah panduan untuk menjalankan aplikasi ini di server VPS (Linux).
 
 ### Langkah 1: Clone Repositori
 
-git clone [https://github.com/azzikriputra6661/Realtime-Traffic-Counter.git](https://github.com/azzikriputra6661/Realtime-Traffic-Counter.git)
-cd Realtime-Traffic-Counter/web_prototype
+`git clone [https://github.com/azzikriputra6661/Realtime-Traffic-Counter.git](https://github.com/azzikriputra6661/Realtime-Traffic-Counter.git)`
+`cd Realtime-Traffic-Counter/web_prototype`
 
 ### Langkah 2: Setup Lingkungan (Metode Virtual Environment)
 
@@ -73,7 +73,7 @@ cd Realtime-Traffic-Counter/web_prototype
 * **Terminal 2: Jalankan Web Server Flask**
 `python app.py`
 
-*Jalankan web server menggunakan Gunicorn untuk produksi
+* **Jalankan web server menggunakan Gunicorn untuk produksi*8
 * **gunicorn --bind 0.0.0.0:5000 app:app**
 * **Langkah 4: Akses Aplikasi**
 * **Setelah kedua proses berjalan, aplikasi web dapat diakses melalui browser di alamat:**
