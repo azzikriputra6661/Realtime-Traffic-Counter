@@ -55,10 +55,10 @@ cd Realtime-Traffic-Counter/web_prototype
 ### Langkah 2: Setup Lingkungan (Metode Virtual Environment)
 
 1. **Buat virtual environment**
-*python3 -m venv venv_gpu*
+*python3 -m venv venv_gpu
 
 2. **Aktifkan environment**
-*source venv_gpu/bin/activate*
+*source venv_gpu/bin/activate
 
 3. **Install semua library yang dibutuhkan**
-*pip install -r requirements.txt*
+*pip install -r requirements.txt
