@@ -76,6 +76,19 @@ Berikut adalah panduan untuk menjalankan aplikasi ini di server VPS (Linux).
 * **Jalankan web server menggunakan Gunicorn untuk produksi**
 `gunicorn --bind 0.0.0.0:5000 app:app`
 
+### Cara Cepat Menjalankan (Untuk Windows)
+
+Jika Anda menjalankan proyek ini di lingkungan Windows dan sudah menyelesaikan semua langkah setup di atas, Anda bisa menggunakan skrip `run.bat` untuk memulai semua layanan secara otomatis dengan satu kali klik.
+
+1.  **Konfigurasi (Jika Perlu):** Buka file `run.bat` dengan editor teks. Anda bisa mengubah target CCTV yang ingin diproses di dalam file tersebut.
+2.  **Jalankan:** Cukup klik dua kali pada file **`run.bat`**.
+3.  **Proses:** Skrip ini akan secara otomatis:
+    * Membuka jendela terminal baru untuk **Counter Worker** dan menjalankannya. Jendela ini akan menampilkan menu interaktif untuk memilih CCTV.
+    * Membuka jendela terminal kedua untuk **Web Server Flask**.
+4.  **Akses Aplikasi:** Setelah kedua jendela berjalan, buka browser dan akses `http://127.0.0.1:5000`.
+
+**Catatan:** Skrip ini dirancang untuk kemudahan penggunaan di lingkungan pengembangan lokal. Untuk *deployment* di server produksi (Linux), ikuti panduan `systemd` atau **Docker Compose**.
+
 ### Langkah 4: Akses Aplikasi
 * **Setelah kedua proses berjalan, aplikasi web dapat diakses melalui browser di alamat:**
 `http://IP_SERVER_ANDA:5000`
